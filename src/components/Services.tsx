@@ -57,7 +57,7 @@ const Services = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,82,212,0.04)_0%,transparent_60%)]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]">
+        <div className="text-center mb-20 animate-on-scroll opacity-0 translate-y-8 blur-sm">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-wide">
             AI-Powered Services for
             <br />
@@ -74,9 +74,9 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="opacity-0 glass-card bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105"
+              className="animate-on-scroll opacity-0 translate-y-8 blur-sm glass-card bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105"
               style={{ 
-                animation: `fadeInUp 0.8s ease-out ${0.2 + index * 0.1}s forwards`
+                transitionDelay: `${index * 0.1}s`
               }}
             >
               <div className="aspect-video overflow-hidden">
@@ -102,7 +102,7 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16 opacity-0" style={{ animation: 'fadeInUp 0.8s ease-out 0.8s forwards' }}>
+        <div className="text-center mt-16 animate-on-scroll opacity-0 translate-y-8 blur-sm" style={{ transitionDelay: '0.6s' }}>
           <Link
             to="/specservices"
             className="glass-button px-8 py-4 bg-gradient-to-r from-[#0052D4]/20 via-[#4364F7]/20 to-[#6FB1FC]/20 border border-[#4364F7]/30 rounded-lg backdrop-blur-sm font-light tracking-wide hover:from-[#0052D4]/30 hover:via-[#4364F7]/30 hover:to-[#6FB1FC]/30 transition-all duration-300 inline-block"

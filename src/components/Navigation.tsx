@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [showSpecificDropdown, setShowSpecificDropdown] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -35,7 +36,16 @@ const Navigation = () => {
     }
   };
 
+  // Check if we're on a services page
+  const isServicesPage = location.pathname === '/genservices' || location.pathname === '/specservices';
+
   useEffect(() => {
+    // Set active section based on current page
+    if (isServicesPage) {
+      setActiveSection('services');
+      return;
+    }
+
     const handleScroll = () => {
       const sections = navItems.map(item => ({
         id: item.id,
@@ -57,7 +67,7 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname, isServicesPage]);
 
   return (
     <nav className="fixed top-4 left-4 right-4 z-50 bg-black/10 backdrop-blur-xl border border-white/5 rounded-3xl subtle-nav-glow">
@@ -79,25 +89,26 @@ const Navigation = () => {
                     <button
                       onClick={() => scrollToSection(item.id)}
                       className={`flex items-center gap-1 px-4 py-2 text-sm font-light tracking-wide transition-all duration-300 rounded-lg ${
-                        activeSection === item.id
+                        activeSection === item.id || isServicesPage
                           ? 'text-blue-400 bg-blue-400/10'
                           : 'text-gray-300 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {item.label}
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showServicesDropdown ? 'rotate-180' : ''}`} />
                     </button>
 
-                    {/* Services Dropdown */}
-                    <div className={`dropdown-menu absolute top-full left-0 mt-2 w-64 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden ${showServicesDropdown ? 'opacity-100 visible transform-none' : ''}`}>
+                    {/* Services Dropdown with smooth animations */}
+                    <div className={`dropdown-menu absolute top-full left-0 mt-2 w-64 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl ${showServicesDropdown ? 'opacity-100 visible transform-none' : ''}`}>
                       <Link
                         to="/genservices"
-                        className="block px-6 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200"
+                        className="block px-6 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 border-b border-white/5"
                       >
-                        General
+                        <div className="font-medium">General Services</div>
+                        <div className="text-xs text-gray-500 mt-1">Comprehensive AI solutions</div>
                       </Link>
                       <div 
-                        className="relative group"
+                        className="relative nested-dropdown-persistent"
                         onMouseEnter={() => setShowSpecificDropdown(true)}
                         onMouseLeave={() => setShowSpecificDropdown(false)}
                       >
@@ -105,15 +116,43 @@ const Navigation = () => {
                           to="/specservices"
                           className="w-full flex items-center justify-between px-6 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200"
                         >
-                          Specific Niche
-                          <ChevronDown className="w-4 h-4" />
+                          <div>
+                            <div className="font-medium">Specific Niche</div>
+                            <div className="text-xs text-gray-500 mt-1">Industry-focused solutions</div>
+                          </div>
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showSpecificDropdown ? 'rotate-180' : ''}`} />
                         </Link>
-                        {/* Specific Niche Dropdown */}
-                        <div className={`absolute left-full top-0 w-48 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl ml-2 transition-all duration-200 ${showSpecificDropdown ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                          <Link to="/specservices?niche=ecommerce" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">E-Commerce</Link>
-                          <Link to="/specservices?niche=marketing" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Marketing</Link>
-                          <Link to="/specservices?niche=sales" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Sales</Link>
-                          <Link to="/specservices?niche=coaching" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Coaching</Link>
+                        
+                        {/* Specific Niche Nested Dropdown with smooth animations */}
+                        <div className={`nested-dropdown-menu absolute left-full top-0 w-56 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl ml-2 shadow-2xl overflow-hidden ${showSpecificDropdown ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                          <Link 
+                            to="/specservices?niche=ecommerce" 
+                            className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 border-b border-white/5"
+                          >
+                            <div className="font-medium">E-Commerce</div>
+                            <div className="text-xs text-gray-500 mt-1">Online retail automation</div>
+                          </Link>
+                          <Link 
+                            to="/specservices?niche=marketing" 
+                            className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 border-b border-white/5"
+                          >
+                            <div className="font-medium">Marketing</div>
+                            <div className="text-xs text-gray-500 mt-1">AI-driven campaigns</div>
+                          </Link>
+                          <Link 
+                            to="/specservices?niche=sales" 
+                            className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 border-b border-white/5"
+                          >
+                            <div className="font-medium">Sales</div>
+                            <div className="text-xs text-gray-500 mt-1">Revenue optimization</div>
+                          </Link>
+                          <Link 
+                            to="/specservices?niche=coaching" 
+                            className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200"
+                          >
+                            <div className="font-medium">Coaching</div>
+                            <div className="text-xs text-gray-500 mt-1">Personal development AI</div>
+                          </Link>
                         </div>
                       </div>
                     </div>

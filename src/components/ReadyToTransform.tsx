@@ -14,7 +14,7 @@ const ReadyToTransform = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,82,212,0.04)_0%,transparent_60%)]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
+        <div className="text-center animate-on-scroll opacity-0 translate-y-8 blur-sm">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-wide">
             Ready To Transform
             <br />

@@ -38,7 +38,7 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-32 relative bg-black">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]">
+        <div className="text-center mb-20 animate-on-scroll opacity-0 translate-y-8 blur-sm">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-wide">
             Frequently Asked <span className="dynamic-gradient-text">Questions</span>
           </h2>
@@ -51,9 +51,9 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="opacity-0 mb-6"
+              className="animate-on-scroll opacity-0 translate-y-8 blur-sm mb-6"
               style={{ 
-                animation: `fadeInUp 0.8s ease-out ${0.2 + index * 0.1}s forwards`
+                transitionDelay: `${index * 0.1}s`
               }}
             >
               <button
