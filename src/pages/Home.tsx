@@ -12,42 +12,6 @@ import { ChatBotProvider } from '../contexts/ChatBotContext';
 import '../animations.css';
 
 function Home() {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  useEffect(() => {
-    // Modern intersection observer for smooth animations
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add modern animation classes
-            if (entry.target.classList.contains('modern-fade-in')) {
-              entry.target.classList.add('animate-in');
-            } else if (entry.target.classList.contains('modern-slide-up')) {
-              entry.target.classList.add('animate-in');
-            } else if (entry.target.classList.contains('modern-blur-fade')) {
-              entry.target.classList.add('animate-in');
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -20px 0px'
-      }
-    );
-
-    // Observe all modern animatable elements
-    const elements = document.querySelectorAll('.modern-fade-in, .modern-slide-up, .modern-blur-fade');
-    elements.forEach((el) => observerRef.current?.observe(el));
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
   return (
     <ChatBotProvider>
       <div className="min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden relative">

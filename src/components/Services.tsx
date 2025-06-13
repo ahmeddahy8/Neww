@@ -50,11 +50,14 @@ const Services = () => {
 
   return (
     <section id="services" className="py-32 relative">
-      {/* Darker background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0052D4]/8 to-black/60"></div>
+      {/* Same dark background as hero */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,100,247,0.08)_0%,rgba(0,82,212,0.03)_40%,transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(111,177,252,0.06)_0%,transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,82,212,0.04)_0%,transparent_60%)]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 modern-blur-fade opacity-0">
+        <div className="text-center mb-20 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.1s_forwards]">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-wide">
             AI-Powered Services for
             <br />
@@ -71,8 +74,10 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="modern-slide-up opacity-0 glass-card bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm overflow-hidden group hover:bg-white/10 transition-all duration-500"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="opacity-0 glass-card bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105"
+              style={{ 
+                animation: `fadeInUp 0.8s ease-out ${0.2 + index * 0.1}s forwards`
+              }}
             >
               <div className="aspect-video overflow-hidden">
                 <img
@@ -97,7 +102,7 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16 modern-fade-in opacity-0" style={{ animationDelay: '0.6s' }}>
+        <div className="text-center mt-16 opacity-0" style={{ animation: 'fadeInUp 0.8s ease-out 0.8s forwards' }}>
           <Link
             to="/specservices"
             className="glass-button px-8 py-4 bg-gradient-to-r from-[#0052D4]/20 via-[#4364F7]/20 to-[#6FB1FC]/20 border border-[#4364F7]/30 rounded-lg backdrop-blur-sm font-light tracking-wide hover:from-[#0052D4]/30 hover:via-[#4364F7]/30 hover:to-[#6FB1FC]/30 transition-all duration-300 inline-block"

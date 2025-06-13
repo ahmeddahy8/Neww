@@ -13,16 +13,16 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-20 pb-32">
-      {/* Darker background effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0052D4]/10 via-black/80 to-[#6FB1FC]/10 animate-breathe"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,100,247,0.2)_0%,rgba(0,82,212,0.08)_40%,transparent_70%)] animate-breathe-slow"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(111,177,252,0.15)_0%,transparent_50%)] animate-breathe-reverse"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,82,212,0.1)_0%,transparent_60%)]"></div>
+      {/* Much darker background effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,100,247,0.08)_0%,rgba(0,82,212,0.03)_40%,transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(111,177,252,0.06)_0%,transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(0,82,212,0.04)_0%,transparent_60%)]"></div>
 
       <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-        <div className="modern-fade-in opacity-0">
-          {/* Badge with downward movement */}
-          <div className="inline-flex items-center px-4 py-2 mb-12 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm badge-float">
+        <div className="opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
+          {/* Badge with more spacing from top - moved further down */}
+          <div className="inline-flex items-center px-4 py-2 mb-16 mt-8 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
             <span className="text-sm font-bold dynamic-gradient-text tracking-wide">2025</span>
             <span className="mx-2 text-gray-500">•</span>
             <span className="text-xs font-light text-gray-300 tracking-wide">Next-Gen Ai Integrations</span>

@@ -108,8 +108,9 @@ const Navigation = () => {
                           Specific Niche
                           <ChevronDown className="w-4 h-4" />
                         </Link>
+                        {/* Specific Niche Dropdown */}
                         <div className={`absolute left-full top-0 w-48 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl ml-2 transition-all duration-200 ${showSpecificDropdown ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                          <Link to="/specservices?niche=ecommerce" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">E-commerce</Link>
+                          <Link to="/specservices?niche=ecommerce" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">E-Commerce</Link>
                           <Link to="/specservices?niche=marketing" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Marketing</Link>
                           <Link to="/specservices?niche=sales" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Sales</Link>
                           <Link to="/specservices?niche=coaching" className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200">Coaching</Link>

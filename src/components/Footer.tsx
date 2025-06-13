@@ -53,28 +53,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social - Perfectly aligned */}
+          {/* Social - Left aligned under Social */}
           <div>
             <h3 className="text-white font-semibold mb-6 tracking-wide">Social</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide relative px-2 py-1 rounded hover:bg-blue-400/10 block">
+                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide block">
                   Twitter (X)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide relative px-2 py-1 rounded hover:bg-blue-400/10 block">
+                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide block">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide relative px-2 py-1 rounded hover:bg-blue-400/10 block">
+                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide block">
                   Youtube
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 font-light tracking-wide relative px-2 py-1 rounded hover:bg-blue-400/10 block">
-                  Framer
                 </a>
               </li>
             </ul>
